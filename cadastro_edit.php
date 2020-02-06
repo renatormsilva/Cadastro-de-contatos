@@ -1,4 +1,4 @@
-<!doctype html>
+e<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -12,23 +12,29 @@
   </head>
   <body>
 
-    <!-- Dados de conexão -->
+    <!-- Dados de conexão no Banco de dados -->
 
     <?php 
 
       include "conexao.php";
+      // method
+      // Pegar o Id do usuário já informado e apresentar no formulário
 
       $id = $_GET['id'] ?? '';
-      $sql = "SELECT * FROM  pessoas WHERE  cod_pessoa = $id";
 
+      //fazer uma busca no banco de dados
+      $sql = "SELECT * FROM  pessoas WHERE  cod_pessoa = $id";
+      // apresentação desses dados no formulário
+      // criação de um vetor
       $dados = mysqli_query($conn, $sql);
+      // funçaõ que percorre o vetor resultante //params
       $linha = mysqli_fetch_assoc($dados);
 
 
 
     ?>
 
-    <!-- COMEÇO DO PROJETO - FORMULÁRIO DE CADASTRO -->
+    <!-- COMEÇO DO PROJETO - FORMULÁRIO DE CADASTRO  - Página de cadastro -->
 
     <div class="container">
       <div class="row">
@@ -37,7 +43,8 @@
           <form action="edit_script.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome completo</label>
-                <input type="text" class="form-control" name="nome" required value="<?php echo $linha['nome']; ?>">
+                                                                                      <!-- elemento -->
+                <input type="text" class="form-control" name="nome" required value="<?php echo $linha['nome']; ?>"> 
             </div>
 
             <div class="form-group">
