@@ -20,6 +20,11 @@
             <?php 
                 include "conexao.php";
 
+                // Método POST
+                // Receber dados no "name" do formulário e atribuir a uma variável
+                // update != insert
+
+
                 $id = $_POST['id'];
 
                 $nome = $_POST['nome'];
@@ -28,11 +33,12 @@
                 $email = $_POST['email'];
                 $data_nascimento = $_POST['data_nascimento'];
 
-                // $sql = "INSERT INTO `pessoas` (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`) VALUES ('$nome','$endereco',
-                  //    '$telefone','$email','$data_nascimento')";
-
+                // atributo
+                // Update = atualização de dados 
                  $sql = "UPDATE `pessoas` set `nome` = '$nome', `endereco` = '$endereco', `telefone` = '$telefone', `email` = '$email',      `data_nascimento` = '$data_nascimento' WHERE cod_pessoa = $id";
-
+                // Função de inserir no banco ! params de conexão e  instrução (vetor / dados)
+                // condicional para testes !
+                // função reservada 
                if (mysqli_query($conn, $sql)) {
                 mensagem("$nome alterado com sucesso!", 'success');
                } else

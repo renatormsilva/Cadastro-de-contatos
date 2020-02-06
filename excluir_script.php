@@ -20,20 +20,22 @@
             <?php 
                 include "conexao.php";
 
+                // Método POST
+                // Receber dados do formuçário
+                // atributo
+
                 $id = $_POST['id'];
 
                 $nome = $_POST['nome'];
-                
-
-                
-
+          
                  $sql = "DELETE from `pessoas` WHERE cod_pessoa = $id";
-
+                // Função de inserir no banco ! params de conexão e  instrução (vetor / dados)
+                // condicional para testes !
+                // função reservada 
                if (mysqli_query($conn, $sql)) {
                 mensagem("$nome excluido com sucesso!", 'success');
                } else
-                mensagem("$nome NÃO excluido!", 'danger')
-;
+                mensagem("$nome NÃO excluido!", 'danger');
 
             ?>
 

@@ -13,7 +13,7 @@
   <body>
 
     <!-- COMEÇO DO PROJETO - FORMULÁRIO DE CADASTRO -->
-
+    <!-- Corpo do Site no bootstrap - container -->
     <div class="container">
       <div class="row">
         <div class="col">
