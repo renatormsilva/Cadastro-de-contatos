@@ -13,24 +13,30 @@
   </head>
   <body>
 
-    <!-- Script PHP -->
-
+    <!-- Script PHP para a busca dos dados no banco de dados - Barra de pesquisa -->
+    
     <?php 
+      // receber dados da barra de busca //armazenar
+      // executar uma ação
+      // metodo post
       
-       $pesquisa = $_POST['busca'] ?? '';
+      $pesquisa = $_POST['busca'] ?? '';
      
-
       include "conexao.php";
+      
+      // Buscar dados do banco de dados
+      ## <!-- LIKE trecho da palavra -->
+      // Método de pesquisa 
+      // atributo
 
       $sql = "SELECT * FROM pessoas WHERE nome LIKE '%$pesquisa%'";
-
+      // variável vai Receber os objetos lá do banco 
+      // criar um vetor na variável
+      // params de conexão e o  a instrução (vetor / dados)
       $dados = mysqli_query($conn, $sql);
 
       ?>
-
-
-
-    <!-- COMEÇO DO PROJETO - FORMULÁRIO DE CADASTRO -->
+    <!-- COMEÇO DO PROJETO PESQUISA - FORMULÁRIO DE CADASTRO -->
 
     <div class="container">
       <div class="row">
@@ -60,8 +66,12 @@
 
                 <?php
 
+                // função que percorre o vetor resultante
+                // atribuição de variável 
+                // elemento 
+
                 while ($linha =  mysqli_fetch_assoc($dados) ) {
-                  $cod_pessoa = $linha['cod_pessoa'];
+                  $cod_pessoa = $linha['cod_pessoa']; 
                   $nome = $linha['nome'];
                   $endereco = $linha['endereco'];
                   $telefone = $linha['telefone'];
@@ -91,6 +101,8 @@
 
                         </tr>";
                         # onclick="pegar_dados($id, '$nome')" O SEGREDO ESTÁ AQUI ""-->
+                        # $id numérico e não precisa de aspas
+                        # $nome não numérico precisa de aspas 
                }
               ?>
               
@@ -103,7 +115,7 @@
       </div>
     </div>
   </div>
-
+               <!-- Modal - Ciaxa de diálogo de confirmação -->
     <div class="modal fade" id="confirma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -115,6 +127,7 @@
           </div>
           <div class="modal-body">
              <form action="excluir_script.php" method="POST">
+             <!-- script do nome da pessoa com javascript -->
             <p>Deseja realmente excluir <b id="nome_pessoa">nome do pessoa</b>?</p>
             
           </div>
@@ -129,7 +142,7 @@
       </div>
     </div>
 
-
+               <!-- Script para pegar Dados via JAVASCRIPT -->
     <script type="text/javascript">
       function pegar_dados(id, nome) {
         document.getElementById('nome_pessoa').innerHTML = nome;
