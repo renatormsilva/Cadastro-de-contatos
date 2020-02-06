@@ -18,7 +18,10 @@
       <div class="row">
 
             <?php 
+                // incluir o conteúdo de outro script
                 include "conexao.php";
+                // Método POST
+                // Receber dados no "name" do formulário e atribuir a uma variável
 
                 $nome = $_POST['nome'];
                 $endereco = $_POST['endereco'];
@@ -26,20 +29,28 @@
                 $email = $_POST['email'];
                 $data_nascimento = $_POST['data_nascimento'];
 
+                // upload de fotos
+                // vetor dentro de um vetor
+                // elemento // atribuição do formulário
+                // metodo
+
                 $foto = $_FILES['foto'];
+                // nome da foto no banco de dados criado
                 $nome_foto = mover_foto($foto);
 
                 if ($nome_foto == 0) {
                   $nome_foto = null;
                 }
 
+                // Comando - mysql - INSERT  - inserir os dados e armazenar em uma variável
+                // Atributo
 
                 $sql = "INSERT INTO `pessoas` (`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `foto` ) VALUES ('$nome','$endereco',
                     '$telefone','$email','$data_nascimento', '$nome_foto')";
-
-               if (mysqli_query($conn, $sql)) {
-                
-                
+                // Função de inserir no banco ! params de conexão e  instrução (vetor / dados)
+                // condicional para testes !
+                // função reservada 
+               if (mysqli_query($conn, $sql)) {   
                 mensagem("$nome cadastrado com sucesso!", 'success');
                } else
                 mensagem("$nome NÃO cadastrado!", 'danger');
